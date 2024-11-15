@@ -124,6 +124,39 @@ reviewer1.rate_hw(student2, 'Python', 10)
 student1.rate_lecturer(lecturer1, 'Python', 10)
 student2.rate_lecturer(lecturer2, 'Python', 10)
 
+def average_student_grade(students, course):
+    total_grades = 0
+    total_count = 0
+    for student in students:
+        if course in student.grades:
+            total_grades += sum(student.grades[course])
+            total_count += len(student.grades[course])
+    if total_count > 0:
+        return total_grades / total_count
+    return 0
+
+def average_lecturer_grade(lecturers, course):
+    total_grades = 0
+    total_count = 0
+    for lecturer in lecturers:
+        if course in lecturer.grades:
+            total_grades += sum(lecturer.grades[course])
+            total_count += len(lecturer.grades[course])
+    if total_count > 0:
+        return total_grades / total_count
+    return 0
+
+students = [student1, student2]
+
+lecturers = [lecturer1, lecturer2]
+
+course_name = 'Python'
+avg_student_grade = average_student_grade(students, course_name)
+avg_lecturer_grade = average_lecturer_grade(lecturers, course_name)
+
+print(f'Средний балл за домашние задания по курсу {course_name}: {avg_student_grade}')
+print(f'Средний балл за лекции по курсу {course_name}: {avg_lecturer_grade}')
+
 print(student1)
 print(student2)
 print(lecturer1)
